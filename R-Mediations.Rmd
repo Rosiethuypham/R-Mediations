@@ -47,7 +47,7 @@ data <- data.frame(x, w, m, cov, y)
 # Hayes' Model 8
 
 ## Fitted model for mediator
-model.m <- glm(m ~ x*w, data = data)
+model.m <- glm(m ~ x*w, data = data) # here the mediator is a continuous variable and can be negative, so it is not a negative binomial or Poisson distribution here. If the mediator is also input as percentage, then model.m <- glm.nb(m ~ x*w, data = data) or model.m <- gam(m ~ x*w, data = data, family = nb()).
 
 ## Fitted model for outcome 
 model.y <- glm.nb(y ~ x*w + m, data = data)
